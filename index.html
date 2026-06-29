@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You Become the Next Twisha</title>
+<meta name="description" content="10 laws every Indian woman deserves to know before she gets married.">
+<meta property="og:title" content="Before You Become the Next Twisha — Know This.">
+<meta property="og:description" content="10 laws every Indian woman deserves to know before she gets married.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0D0D0D;
+    --surface: #161616;
+    --red:     #C0392B;
+    --red-dim: #8B2320;
+    --gold:    #D4A017;
+    --white:   #F0EDE8;
+    --muted:   #888888;
+    --border:  #2A2A2A;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── BOOK WRAPPER ── */
+  #book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* ── PAGES ── */
+  .page {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(24px, 5vw, 80px) clamp(24px, 8vw, 120px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(60px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .page::-webkit-scrollbar { display: none; }
+  .page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+  .page.exit-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .page-inner {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ── COVER ── */
+  #page-cover {
+    background: var(--bg);
+    text-align: center;
+  }
+  #page-cover .page-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(10px, 1.2vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+  .cover-title em {
+    font-style: italic;
+    color: var(--white);
+  }
+  .cover-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+  }
+  .cover-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(15px, 2vw, 22px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--white);
+    opacity: 0.85;
+    line-height: 1.5;
+    margin-bottom: 48px;
+  }
+  .cover-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.2s;
+  }
+  .cover-cta:hover { color: var(--white); }
+  .cover-cta .arrow {
+    display: inline-block;
+    animation: pulse-right 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+  }
+  .disclaimer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  /* ── TWISHA PAGE ── */
+  #page-twisha {
+    background: #110808;
+  }
+
+  /* ── MYTH PAGES ── */
+  .myth-page {
+    background: var(--surface);
+  }
+
+  /* ── CONTENT ELEMENTS ── */
+  .eyebrow {
+    font-size: clamp(10px, 1.1vw, 12px);
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .myth-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(60px, 10vw, 130px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--border);
+    position: absolute;
+    top: clamp(16px, 3vw, 40px);
+    right: clamp(16px, 4vw, 60px);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.15;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 50px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .myth-statement {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.2vw, 40px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .myth-statement .emoji { margin-right: 8px; }
+
+  .reality-box {
+    border-left: 3px solid var(--red);
+    padding: 14px 18px;
+    background: rgba(192, 57, 43, 0.08);
+    margin-bottom: 22px;
+    border-radius: 0 4px 4px 0;
+  }
+  .reality-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .reality-text {
+    font-size: clamp(13px, 1.5vw, 16px);
+    line-height: 1.6;
+    color: var(--white);
+    opacity: 0.9;
+  }
+  .reality-text .CAPS {
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.03em;
+  }
+
+  .body-text {
+    font-size: clamp(13px, 1.4vw, 15px);
+    line-height: 1.75;
+    color: var(--white);
+    opacity: 0.78;
+    margin-bottom: 14px;
+  }
+  .body-text .CAPS {
+    font-weight: 700;
+    color: var(--white);
+    opacity: 1;
+    letter-spacing: 0.03em;
+  }
+  .body-text strong { color: var(--white); opacity: 1; font-weight: 600; }
+
+  .law-box {
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 18px;
+    background: rgba(212, 160, 23, 0.05);
+    margin-top: 18px;
+  }
+  .law-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .law-text {
+    font-size: clamp(12px, 1.3vw, 14px);
+    line-height: 1.65;
+    color: var(--white);
+    opacity: 0.8;
+  }
+  .law-text .CAPS {
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+  .law-text strong { font-weight: 600; color: var(--white); opacity: 1; }
+
+  /* ── TWISHA-SPECIFIC ── */
+  .twisha-quote {
+    border-left: 3px solid var(--red);
+    padding: 12px 16px;
+    background: rgba(192,57,43,0.07);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.8vw, 18px);
+    line-height: 1.6;
+    color: var(--white);
+    margin: 18px 0;
+  }
+
+  /* ── CLOSING PAGE ── */
+  #page-closing {
+    background: #0A0A0A;
+    text-align: center;
+  }
+  .closing-list {
+    list-style: none;
+    margin: 28px 0;
+    text-align: left;
+    display: inline-block;
+  }
+  .closing-list li {
+    font-size: clamp(14px, 1.8vw, 18px);
+    font-weight: 600;
+    color: var(--white);
+    padding: 7px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .closing-list li .not {
+    color: var(--red);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .help-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-top: 24px;
+    text-align: left;
+  }
+  .help-box .law-label { margin-bottom: 10px; }
+  .help-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--white);
+    opacity: 0.8;
+    gap: 12px;
+  }
+  .help-row:last-child { border-bottom: none; }
+  .help-row strong { color: var(--white); opacity: 1; font-weight: 600; }
+  .closing-sign {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2vw, 20px);
+    color: var(--red);
+    margin-top: 28px;
+    line-height: 1.6;
+  }
+  .share-nudge {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV ── */
+  #nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(16px, 5vw, 60px);
+    background: linear-gradient(to top, rgba(13,13,13,0.98) 60%, transparent);
+    z-index: 100;
+  }
+  .nav-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-btn:hover:not(:disabled) {
+    border-color: var(--red);
+    color: var(--white);
+    background: rgba(192,57,43,0.15);
+  }
+  .nav-btn:disabled { opacity: 0.2; cursor: default; }
+
+  #progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  #progress-text {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  #progress-bar {
+    width: clamp(100px, 20vw, 200px);
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  #progress-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .myth-number { display: none; }
+    .page { padding: 20px 20px 70px; justify-content: flex-start; padding-top: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page { transition: none; }
+    .cover-cta .arrow { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="book">
+
+  <!-- ── COVER ── -->
+  <div class="page active" id="page-cover">
+    <div class="page-inner">
+      <div class="cover-eyebrow">A guide for every Indian woman</div>
+      <h1 class="cover-title">Before You Become<br>the Next <em>Twisha</em></h1>
+      <div class="cover-rule"></div>
+      <p class="cover-sub">10 laws every Indian woman deserves to know<br>before she gets married.</p>
+      <button class="cover-cta" onclick="goTo(1)">
+        Begin reading <span class="arrow">→</span>
+      </button>
+      <p class="disclaimer">⚠️ This is legal awareness, not legal advice. For your specific situation, please consult a qualified lawyer.</p>
+    </div>
+  </div>
+
+  <!-- ── TWISHA ── -->
+  <div class="page" id="page-twisha">
+    <div class="page-inner">
+      <div class="eyebrow">💔 For Twisha</div>
+      <h2 class="page-title">This one is for Twisha.</h2>
+      <p class="body-text">Twisha Sharma was 31 years old. A model. Educated. She had a whole life ahead of her.</p>
+      <p class="body-text">She married Samarth Singh in December 2025 and moved to Bhopal to live with his family. Five months later, she was found dead.</p>
+      <p class="body-text">Her family says she was harassed for dowry. That she lost 15 kilos after the wedding. That she sent messages saying she was scared and wanted to leave.</p>
+      <div class="twisha-quote">Her mother-in-law, Giribala Singh, was a former district judge.</div>
+      <p class="body-text">A woman who spent her career in courtrooms. Who knew the law better than most people ever will. And yet — the CBI arrested them both. The husband, a lawyer. The mother-in-law, a judge.</p>
+      <div class="reality-box">
+        <div class="reality-label">📌 The point of this book</div>
+        <div class="reality-text">Education does <span class="CAPS">NOT</span> protect you. Status does <span class="CAPS">NOT</span> protect you. Knowing your rights might. This book exists so you know them before you need them.</div>
+      </div>
+      <p class="body-text" style="font-style:italic; color: #C0392B; opacity:1;">For her.</p>
+    </div>
+  </div>
+
+  <!-- ── MYTH 1: DOWRY ── -->
+  <div class="page myth-page">
+    <div class="myth-number">1</div>
+    <div class="page-inner">
+      <div class="eyebrow">🚫 Myth 1</div>
+      <h2 class="myth-statement">Your family has to give dowry.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">Dowry is <span class="CAPS">ILLEGAL</span>. Giving it. Taking it. Demanding it. All of it is a criminal offence punishable by 5+ years in prison.</div>
+      </div>
+      <p class="body-text">This has been the law since <strong>1961</strong>. Over sixty years. And yet here we are.</p>
+      <p class="body-text">"But everyone does it." Everyone also speeds. It is still <span class="CAPS" style="color:#C0392B; font-weight:700;">ILLEGAL</span>. "But we are calling it a gift." Does <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> matter. If it is expected because of the marriage — it is dowry.</p>
+      <p class="body-text">Twisha's mother-in-law was a <strong>judge</strong>. She allegedly broke this law anyway. If that tells you anything, it is this: the law only protects you if you know it and use it.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The actual law</div>
+        <div class="law-text"><strong>Dowry Prohibition Act, 1961 — Section 3:</strong> giving OR taking dowry = minimum 5 years jail + fine.<br><br><strong>IPC Section 498A:</strong> harassment for dowry is a separate criminal offence. Police <span class="CAPS">MUST</span> register the case. They <span class="CAPS">CANNOT</span> refuse.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 2: POST-WEDDING DEMANDS ── -->
+  <div class="page myth-page">
+    <div class="myth-number">2</div>
+    <div class="page-inner">
+      <div class="eyebrow">🎁 Myth 2</div>
+      <h2 class="myth-statement">Gifts demanded after the wedding are fine. That is NOT dowry.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">It <span class="CAPS">IS</span> still dowry. The law covers demands made before, during, <span class="CAPS">AND</span> after the wedding. There is no loophole.</div>
+      </div>
+      <p class="body-text">A very common move: do NOT ask before the wedding. Ask after. Call it a gift. Call it help. Call it a contribution. The law sees through it.</p>
+      <p class="body-text">The Dowry Prohibition Act defines dowry as anything given <strong>"in connection with the marriage"</strong> — NOT just at the wedding. A demand six months later is <span class="CAPS" style="color:#C0392B; font-weight:700;">ILLEGAL</span> if it is connected to the marriage.</p>
+      <div class="law-box">
+        <div class="law-label">📋 What to do</div>
+        <div class="law-text">If your in-laws are demanding money, jewellery, a car, land, or anything else after the wedding — <strong>document it</strong>. Screenshot messages. Save voice notes. Keep records. Then speak to a lawyer.<br><br>Asking is already the crime. You do <span class="CAPS">NOT</span> have to hand anything over.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 3: TAUNTS ── -->
+  <div class="page myth-page">
+    <div class="myth-number">3</div>
+    <div class="page-inner">
+      <div class="eyebrow">😤 Myth 3</div>
+      <h2 class="myth-statement">You have to put up with taunts and comparisons.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text"><span class="CAPS">NO.</span> Taunts, insults, and constant comparisons are mental cruelty. The Kerala High Court has ruled this is grounds for divorce.</div>
+      </div>
+      <p class="body-text">Being told you are not good enough. Being compared to his ex, his colleague, his cousin's wife. Being humiliated in front of family. Being made to feel worthless — over and over. This is <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> "just how marriages work." This is cruelty.</p>
+      <p class="body-text">You are <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> too sensitive. You are <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> overreacting. If someone is breaking you down every single day, that is <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> a problem you need to fix. That is cruelty.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The actual law</div>
+        <div class="law-text"><strong>Hindu Marriage Act, 1955 — Section 13(1)(ia):</strong> cruelty, including <strong>mental cruelty</strong>, is a ground for divorce. You do <span class="CAPS">NOT</span> need a hospital report. Sustained verbal abuse, humiliation, and demeaning comparisons all count.<br><br>Supreme Court confirmed this in 2007. The Kerala High Court has applied it specifically to taunts and comparisons.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 4: MONEY ── -->
+  <div class="page myth-page">
+    <div class="myth-number">4</div>
+    <div class="page-inner">
+      <div class="eyebrow">💸 Myth 4</div>
+      <h2 class="myth-statement">Your salary belongs to the household. He gets a say.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">He does <span class="CAPS">NOT</span>. Your money is yours. A married woman has complete, independent financial rights in India.</div>
+      </div>
+      <p class="body-text">Nobody — <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> your husband, <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> your in-laws — has a legal right to your salary. You can open a bank account, buy property, and start a business without asking anyone.</p>
+      <p class="body-text">If someone is controlling your money through fear, taking your salary by force, or stopping you from accessing your own account — that is <span class="CAPS" style="color:#C0392B; font-weight:700;">ILLEGAL</span>. It is economic abuse. And it is domestic violence under Indian law.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The actual law</div>
+        <div class="law-text"><strong>Protection of Women from Domestic Violence Act, 2005 — Section 3:</strong> economic abuse — controlling your money, stopping you from working, taking your earnings — is legally <span class="CAPS">DOMESTIC VIOLENCE</span>. It is <span class="CAPS">NOT</span> just "a marriage problem." You can file a complaint and get a protection order.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 5: IN-LAWS ── -->
+  <div class="page myth-page">
+    <div class="myth-number">5</div>
+    <div class="page-inner">
+      <div class="eyebrow">🏠 Myth 5</div>
+      <h2 class="myth-statement">You have to live with his parents.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">You do <span class="CAPS">NOT</span>. There is no law in India that forces a wife to live with her in-laws. Not one.</div>
+      </div>
+      <p class="body-text">You and your husband decide where you live — together. That is it. If living with in-laws is making your life miserable and you are being pressured to stay, that pressure itself can be a form of domestic violence.</p>
+      <p class="body-text">Also: if his family tries to throw you out of the home you share with your husband, they <span class="CAPS" style="color:#C0392B; font-weight:700;">CANNOT</span> legally do that. You have the right to stay.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The actual law</div>
+        <div class="law-text"><strong>Protection of Women from Domestic Violence Act, 2005 — Section 17:</strong> you have the right to stay in the shared home, even if your name is <span class="CAPS">NOT</span> on the lease or the property papers. Nobody can remove you from it without a court order.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 6: NAME ── -->
+  <div class="page myth-page">
+    <div class="myth-number">6</div>
+    <div class="page-inner">
+      <div class="eyebrow">📛 Myth 6</div>
+      <h2 class="myth-statement">You have to change your name.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">No Indian law says you have to change your name after marriage. It is <span class="CAPS">100% YOUR CHOICE.</span></div>
+      </div>
+      <p class="body-text">Nobody can force you to change your name on your Aadhaar, your passport, your degree certificate, or anywhere else. You are <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> legally required to.</p>
+      <p class="body-text">Keep your name. Change it. Hyphenate it. Use different names in different places. All fine. All legal.</p>
+      <div class="law-box">
+        <div class="law-label">📌 Why this matters</div>
+        <div class="law-text">The pressure to change your name is about identity — making you feel like the person you were before marriage no longer exists. The law does <span class="CAPS">NOT</span> ask this of you. Anyone who says it is "required" is confusing custom with law.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 7: PROPERTY ── -->
+  <div class="page myth-page">
+    <div class="myth-number">7</div>
+    <div class="page-inner">
+      <div class="eyebrow">🏡 Myth 7</div>
+      <h2 class="myth-statement">If you die, your property goes to his family.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text"><span class="CAPS">NO.</span> Your property goes to your children, your husband, and your <span class="CAPS">OWN</span> parents first. <span class="CAPS">NOT</span> your in-laws.</div>
+      </div>
+      <p class="body-text">Many women assume that if they die without a will, everything goes to the husband's family. That is <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> what the Hindu Succession Act says. Your in-laws are <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> first in line.</p>
+      <p class="body-text">BUT — the exact rules depend on the type of property and who you leave behind. Which is why every woman should have a <strong>will</strong>. You do <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> need to be rich or old to write one.</p>
+      <div class="law-box">
+        <div class="law-label">✍️ Write a will</div>
+        <div class="law-text">A will means <span class="CAPS">YOU</span> decide who gets what. Without one, the law decides — and while it is NOT always bad, it does NOT always match what you would have wanted.<br><br>Write one. Sign it. Have it witnessed. Do it now.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 8: DAUGHTERS ── -->
+  <div class="page myth-page">
+    <div class="myth-number">8</div>
+    <div class="page-inner">
+      <div class="eyebrow">👭 Myth 8</div>
+      <h2 class="myth-statement">Your brother gets more of your parents' property than you.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text"><span class="CAPS">NOT</span> anymore. Since 2005, daughters have the <span class="CAPS">EXACT</span> same rights as sons to ancestral property. The Supreme Court confirmed this in 2020.</div>
+      </div>
+      <p class="body-text">For generations, ancestral property passed through sons. Daughters got nothing or got whatever the family chose to give. That changed in 2005. Daughters get the same share as sons — <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> as a favour, as a legal right.</p>
+      <p class="body-text">In 2020, the Supreme Court went further: this right exists from the day you were born. Even if your father died before 2005. Even if the land was divided before 2005. You still have a claim. It <span class="CAPS" style="color:#C0392B; font-weight:700;">CANNOT</span> be taken from you.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ Your right</div>
+        <div class="law-text">If you are a Hindu woman and your family has ancestral property, you are entitled to the same share as your brothers. Marriage does <span class="CAPS">NOT</span> remove this right.<br><br><strong>Reference:</strong> Hindu Succession (Amendment) Act, 2005 — Section 6; <em>Vineeta Sharma v. Rakesh Sharma</em> (2020)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 9: DIVORCE ── -->
+  <div class="page myth-page">
+    <div class="myth-number">9</div>
+    <div class="page-inner">
+      <div class="eyebrow">📃 Myth 9</div>
+      <h2 class="myth-statement">You need his permission to get a divorce.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">You do <span class="CAPS">NOT</span>. You can file for divorce even if he refuses. The court decides — <span class="CAPS">NOT</span> him.</div>
+      </div>
+      <p class="body-text">This myth keeps women stuck. <em>"He will never agree, so I am trapped."</em> You are <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> trapped.</p>
+      <p class="body-text">There are two types of divorce in India. Mutual consent (both agree) and contested divorce (you file, the court decides). If he will <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> agree, you file a contested divorce. Legal grounds include: cruelty, desertion for two or more years, adultery. Mental cruelty — taunts, humiliation, abuse — counts.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The actual law</div>
+        <div class="law-text"><strong>Hindu Marriage Act, 1955 — Section 13:</strong> you can file for divorce without your husband's consent. If the court finds your grounds are valid, divorce <span class="CAPS">WILL</span> be granted. His refusal is <span class="CAPS">NOT</span> a veto.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MYTH 10: GAPS ── -->
+  <div class="page myth-page">
+    <div class="myth-number">10</div>
+    <div class="page-inner">
+      <div class="eyebrow">⚠️ Myth 10</div>
+      <h2 class="myth-statement">The law protects you from everything inside a marriage.</h2>
+      <div class="reality-box">
+        <div class="reality-label">✅ Reality check</div>
+        <div class="reality-text">On some things, the law is still catching up. Here is the honest truth — and where it does <span class="CAPS">NOT</span> yet go far enough.</div>
+      </div>
+      <p class="body-text">Marital rape is <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> yet fully a criminal offence under the IPC. The Supreme Court is reviewing this. It is <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> here yet. Dowry laws exist but enforcement is uneven — Twisha's mother-in-law was a judge and allegedly still broke the law.</p>
+      <p class="body-text">Imperfect does <span class="CAPS" style="color:#C0392B; font-weight:700;">NOT</span> mean powerless.</p>
+      <div class="law-box">
+        <div class="law-label">📞 What you can do right now</div>
+        <div class="law-text">
+          → Non-consensual acts in marriage: raise it as sexual domestic violence under PWDVA, 2005.<br>
+          → Any abuse: document everything. Dates, messages, voice notes, photos.<br>
+          → Free legal help: <strong>District Legal Services Authority (DLSA)</strong> — free of charge.<br>
+          → In danger now: call <strong>112</strong> (emergency) or <strong>181</strong> (women's helpline).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CLOSING ── -->
+  <div class="page" id="page-closing">
+    <div class="page-inner" style="text-align:center;">
+      <div class="eyebrow" style="text-align:center;">🙏 Before you close this</div>
+      <h2 class="page-title">Twisha was educated.<br>Her mother-in-law was a judge.<br>None of that saved her.</h2>
+      <ul class="closing-list">
+        <li>🚫 You do <span class="not">NOT</span> have to give dowry.</li>
+        <li>💸 You do <span class="not">NOT</span> have to hand over your money.</li>
+        <li>😤 You do <span class="not">NOT</span> have to tolerate taunts.</li>
+        <li>🏠 You do <span class="not">NOT</span> have to live with his parents.</li>
+        <li>📛 You do <span class="not">NOT</span> have to change your name.</li>
+        <li>🚪 You do <span class="not">NOT</span> have to stay.</li>
+      </ul>
+      <div class="help-box">
+        <div class="law-label">📞 Get help</div>
+        <div class="help-row"><span>Women's Helpline</span><strong>181</strong></div>
+        <div class="help-row"><span>Emergency</span><strong>112</strong></div>
+        <div class="help-row"><span>National Commission for Women</span><strong>ncw.nic.in</strong></div>
+        <div class="help-row"><span>Free legal aid</span><strong>Your local DLSA</strong></div>
+      </div>
+      <p class="closing-sign">You were never asking for too much.<br>You were just never told the law was on your side.</p>
+      <p class="share-nudge">Share this. The more women who know this, the fewer Twishas there will be.</p>
+    </div>
+  </div>
+
+</div><!-- /book -->
+
+<!-- ── NAV ── -->
+<div id="nav">
+  <button class="nav-btn" id="btn-prev" onclick="go(-1)" disabled>←</button>
+  <div id="progress">
+    <div id="progress-text">1 / 13</div>
+    <div id="progress-bar"><div id="progress-fill" style="width:7.7%"></div></div>
+  </div>
+  <button class="nav-btn" id="btn-next" onclick="go(1)">→</button>
+</div>
+
+<script>
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const total = pages.length;
+  let current = 0;
+
+  function goTo(n) {
+    if (n === current) return;
+    pages[current].classList.add('exit-left');
+    pages[current].classList.remove('active');
+    setTimeout(() => pages[current < n ? current : n].classList.remove('exit-left'), 350);
+    current = n;
+    pages[current].classList.add('active');
+    pages[current].scrollTop = 0;
+    update();
+  }
+
+  function go(dir) {
+    const next = current + dir;
+    if (next < 0 || next >= total) return;
+    goTo(next);
+  }
+
+  function update() {
+    document.getElementById('btn-prev').disabled = current === 0;
+    document.getElementById('btn-next').disabled = current === total - 1;
+    document.getElementById('progress-text').textContent = `${current + 1} / ${total}`;
+    document.getElementById('progress-fill').style.width = `${((current + 1) / total) * 100}%`;
+  }
+
+  // keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+  });
+
+  // swipe
+  let tx = 0;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    const dx = tx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 40) go(dx > 0 ? 1 : -1);
+  }, { passive: true });
+
+  update();
+</script>
+</body>
+</html>
