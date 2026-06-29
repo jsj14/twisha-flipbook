@@ -38,6 +38,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    perspective: 1800px;
   }
 
   /* ── PAGES ── */
@@ -49,23 +50,17 @@
     justify-content: center;
     align-items: center;
     padding: clamp(24px, 5vw, 80px) clamp(24px, 8vw, 120px);
-    opacity: 0;
     pointer-events: none;
-    transform: translateX(60px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
     overflow-y: auto;
     scrollbar-width: none;
+    opacity: 0;
+    backface-visibility: hidden;
   }
   .page::-webkit-scrollbar { display: none; }
   .page.active {
     opacity: 1;
     pointer-events: all;
-    transform: translateX(0);
-  }
-  .page.exit-left {
-    opacity: 0;
-    transform: translateX(-60px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: rotateY(0deg);
   }
 
   .page-inner {
@@ -424,7 +419,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .page { transition: none; }
+    .page, .page.active, .page.flip-in.go, .page.flip-in-back.go,
+    .page.flip-out.go, .page.flip-out-back.go { transition: none !important; }
     .cover-cta .arrow { animation: none; }
   }
 </style>
@@ -661,6 +657,30 @@
     </div>
   </div>
 
+  <!-- ── BONUS: VISMAYA ── -->
+  <div class="page myth-page">
+    <div class="page-inner">
+      <div class="eyebrow">⭐ Bonus — Because Twisha was NOT the first.</div>
+      <h2 class="myth-statement" style="font-size:clamp(20px,3vw,36px);">Vismaya was a medical student. Her husband got 10 years in jail. Here is what convicted him.</h2>
+      <div class="reality-box">
+        <div class="reality-label">📱 Digital evidence saved the case</div>
+        <div class="reality-text">Two days before she died, Vismaya sent her cousin photos of her injuries — bruises on her face, shoulder, and hands. She sent voice messages describing the abuse. Those screenshots and recordings became the spine of a 507-page chargesheet. Her husband Kiran Kumar was convicted and sentenced to <span class="CAPS">10 years in prison.</span></div>
+      </div>
+      <p class="body-text">Vismaya V Nair was 22 years old. An Ayurveda medical student. Found dead at her in-laws' house in Kerala in June 2021 — less than a year after her wedding. Her family had given 100 sovereigns of gold, one acre of land, and a brand new car as dowry. Her husband wanted a different car model. He wanted cash. He kept demanding more.</p>
+      <p class="body-text">She called her mother from the bathroom so he wouldn't hear. She told her mother he had hit her so badly her mouth was bleeding. Her mother told her to come back. Vismaya said she was worried about what people would say.</p>
+      <p class="body-text" style="color:var(--red); opacity:1; font-weight:600;">She stayed. She should NOT have had to.</p>
+      <div class="law-box">
+        <div class="law-label">⚖️ The laws that convicted him — and could protect YOU</div>
+        <div class="law-text">
+          <strong>IPC Section 498A</strong> — cruelty and dowry harassment by husband or in-laws. <span class="CAPS">COGNISABLE</span> offence. Police must act.<br><br>
+          <strong>IPC Section 304B</strong> — dowry death. If a woman dies within 7 years of marriage and there is evidence of dowry harassment, the court presumes guilt. Minimum <strong>7 years</strong> imprisonment.<br><br>
+          <strong>IPC Section 306</strong> — abetment of suicide. If someone's actions drove you to it, they are criminally liable.<br><br>
+          📱 <strong>Your phone is evidence.</strong> Screenshots. Voice notes. Photos of injuries. WhatsApp messages. Save them somewhere safe. Send them to someone you trust. This is what put Kiran Kumar in prison.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── CLOSING ── -->
   <div class="page" id="page-closing">
     <div class="page-inner" style="text-align:center;">
@@ -692,8 +712,8 @@
 <div id="nav">
   <button class="nav-btn" id="btn-prev" onclick="go(-1)" disabled>←</button>
   <div id="progress">
-    <div id="progress-text">1 / 13</div>
-    <div id="progress-bar"><div id="progress-fill" style="width:7.7%"></div></div>
+    <div id="progress-text">1 / 14</div>
+    <div id="progress-bar"><div id="progress-fill" style="width:7.1%"></div></div>
   </div>
   <button class="nav-btn" id="btn-next" onclick="go(1)">→</button>
 </div>
@@ -702,23 +722,66 @@
   const pages = Array.from(document.querySelectorAll('.page'));
   const total = pages.length;
   let current = 0;
+  let animating = false;
 
-  function goTo(n) {
-    if (n === current) return;
-    pages[current].classList.add('exit-left');
-    pages[current].classList.remove('active');
-    setTimeout(() => pages[current < n ? current : n].classList.remove('exit-left'), 350);
-    current = n;
-    pages[current].classList.add('active');
-    pages[current].scrollTop = 0;
-    update();
+  function flip(n) {
+    if (animating || n === current || n < 0 || n >= total) return;
+    animating = true;
+
+    const outPage = pages[current];
+    const inPage  = pages[n];
+    const forward = n > current;
+
+    // set up outgoing page — will rotate away
+    outPage.classList.remove('active');
+    outPage.style.opacity = '1';
+    outPage.style.transformOrigin = forward ? 'left center' : 'right center';
+    outPage.style.transform = 'rotateY(0deg)';
+    outPage.style.transition = 'none';
+    outPage.style.zIndex = '10';
+    outPage.style.boxShadow = 'none';
+
+    // set up incoming page — starts rotated, hidden behind
+    inPage.style.opacity = '1';
+    inPage.style.transformOrigin = forward ? 'right center' : 'left center';
+    inPage.style.transform = forward ? 'rotateY(90deg)' : 'rotateY(-90deg)';
+    inPage.style.transition = 'none';
+    inPage.style.zIndex = '5';
+
+    // force reflow
+    outPage.offsetHeight;
+
+    // animate outgoing page folding away
+    outPage.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.6, 1), box-shadow 0.4s ease';
+    outPage.style.transform = forward ? 'rotateY(-90deg)' : 'rotateY(90deg)';
+    outPage.style.boxShadow = forward ? '12px 0 40px rgba(0,0,0,0.5)' : '-12px 0 40px rgba(0,0,0,0.5)';
+
+    // halfway through, animate incoming page unfolding
+    setTimeout(() => {
+      inPage.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.6, 1)';
+      inPage.style.transform = 'rotateY(0deg)';
+    }, 220);
+
+    // clean up
+    setTimeout(() => {
+      // reset outgoing
+      outPage.style.cssText = '';
+
+      // settle incoming as active
+      inPage.style.cssText = '';
+      inPage.classList.add('active');
+      inPage.scrollTop = 0;
+
+      current = n;
+      update();
+      animating = false;
+    }, 640);
   }
 
-  function go(dir) {
-    const next = current + dir;
-    if (next < 0 || next >= total) return;
-    goTo(next);
-  }
+  function go(dir) { flip(current + dir); }
+
+  // cover button calls this
+  function goTo(n) { flip(n); }
 
   function update() {
     document.getElementById('btn-prev').disabled = current === 0;
@@ -727,13 +790,11 @@
     document.getElementById('progress-fill').style.width = `${((current + 1) / total) * 100}%`;
   }
 
-  // keyboard
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
     if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
   });
 
-  // swipe
   let tx = 0;
   document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
   document.addEventListener('touchend', e => {
